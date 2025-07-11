@@ -1,5 +1,6 @@
 import { Home } from "lucide-react";
 import { FaRegChessKing } from "react-icons/fa6";
+import { NavLink } from "react-router";
 
 import {
   Sidebar,
@@ -15,12 +16,12 @@ import {
 const items = [
   {
     title: "Home",
-    url: "/home",
+    url: "/",
     icon: Home,
   },
   {
     title: "Play Chess",
-    url: "#",
+    url: "/play",
     icon: FaRegChessKing,
   },
 ];
@@ -30,16 +31,16 @@ export default function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>ChessDucksVsGoose</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <NavLink to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
