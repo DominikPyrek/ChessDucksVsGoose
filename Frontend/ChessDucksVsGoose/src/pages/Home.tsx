@@ -1,35 +1,52 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowBigRight } from "lucide-react";
+import { ArrowBigRight, LucideSparkle } from "lucide-react";
 
 export default function Home() {
+  const items = [
+    {
+      title: "Ready for Your Next Challenge?",
+      text: `Join millions of players worldwide in thrilling matches. 
+            Whether you're a beginner or grandmaster, there's always someone to play!`,
+      key_points: [
+        "4/7 matches with players at your level",
+        "Zero ads, pure chess focus",
+        "Join 1M+ chess enthusiasts",
+      ],
+      button_text: "Play Chess Now",
+      button_icon: ArrowBigRight,
+    },
+    {
+      title: "New to Chess?",
+      text: `✓ Learn rules in 5 minutes$
+            ✓ Basic checkmate patterns
+            ✓ Starter opening principles`,
+      button_text: "Start Learning",
+      button_icon: LucideSparkle,
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl">YEYYYYYYYY</h1>
-      <Card className="flex p-4 m-4 gap-10 text-center">
-        <h1>Ready for Your Next Challenge?</h1>
-        <p className=" max-w-md">
-          Join millions of players worldwide in thrilling matches. Whether
-          you're a beginner or grandmaster, there's always someone to play!
-        </p>
-        <Button>
-          Play Chess Now <ArrowBigRight />
-        </Button>
-      </Card>
-      <Card className="flex p-4 m-4 gap-10">
-        <h1>Why Play Here?</h1>
-        <p>
-          • 24/7 matches with players at your level
-          <br />• <strong>Zero ads</strong>, pure chess focus
-          <br />• Learn with <strong>AI-powered analysis</strong>
-          <br />• Join 1M+ chess enthusiasts
-        </p>
-        <Button>Play chess now</Button>
-      </Card>
-      <Card className="flex p-4 m-4 gap-10">
-        <h1>Tests</h1>
-        <Button>Play c hess now</Button>
-      </Card>
+      <h1 className="text-4xl mb-10 mt-20">Welcome To ChessDucksVsGoose</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl w-full">
+        {items.map((item) => (
+          <Card className="p-4 m-4">
+            <h1>{item.title}</h1>
+            <p className=" max-w-md whitespace-pre-line ">{item.text}</p>
+            {item.key_points && (
+              <ul className="space-y-1 list-disc m-4 mt-0">
+                {item.key_points.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+            )}
+            <Button className="mt-auto w-full">
+              {item.button_text} <item.button_icon />
+            </Button>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
