@@ -12,3 +12,14 @@ export type CardItem = {
 export type HomePageCardGenProps = {
   items: CardItem[];
 };
+
+export type PieceType =
+  | "pawn"
+  | "rook"
+  | "knight"
+  | "bishop"
+  | "queen"
+  | "king";
+export type Color = "white" | "black";
+export type ChessPiece = { type: PieceType; color: Color } | null;
+export type Board = ChessPiece[][];
