@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import HomePageCardGen from "@/components/HomePageCardGen";
 import { ArrowBigRight, LucideSparkle, Bot } from "lucide-react";
 
 export default function Home() {
@@ -14,17 +13,19 @@ export default function Home() {
       ],
       button_text: "Play Chess Now",
       button_icon: ArrowBigRight,
+      to: "/play",
     },
     {
       title: "New to Chess?",
       text: `Chess is a timeless game of strategy that’s easy to learn but takes a lifetime to master. Whether you're just starting or need a quick refresher, we’ll help you grasp the basics fast.`,
       key_points: [
-        "Learn rules in 5 minutes$",
+        "Learn rules in 5 minutes",
         "Basic checkmate patterns",
         "Starter opening principles",
       ],
       button_text: "Start Learning",
       button_icon: LucideSparkle,
+      to: "/newToChess",
     },
     {
       title: "Challenge the Computer",
@@ -35,6 +36,7 @@ export default function Home() {
       ],
       button_text: "Play vs AI",
       button_icon: Bot,
+      to: "/playAI",
     },
   ];
 
@@ -42,22 +44,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center p-4">
       <h1 className="text-4xl mb-10 mt-10">Welcome To ChessDucksVsGoose</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl w-full">
-        {items.map((item) => (
-          <Card className="p-4 m-4">
-            <h1>{item.title}</h1>
-            <p className=" max-w-md whitespace-pre-line ">{item.text}</p>
-            {item.key_points && (
-              <ul className="space-y-1 list-disc m-4 mt-0">
-                {item.key_points.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            )}
-            <Button className="mt-auto w-full">
-              {item.button_text} <item.button_icon />
-            </Button>
-          </Card>
-        ))}
+        <HomePageCardGen items={items} />
       </div>
     </div>
   );
